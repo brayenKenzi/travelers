@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::prefix('admin')
+    ->namespace('Admin')
+    ->group(function() {
+        Route::get('/', 'DashboardController@index')
+            ->name('dashboard');
+    
+    });
