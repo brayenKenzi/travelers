@@ -11,6 +11,8 @@ class CreateGalleriesTable extends Migration
      *
      * @return void
      */
+    //cara membuat table: php artisan make:migration create_galleries_table --create=galleries
+    //cara memindahkan ke phpmyadmin MYSQL : php artisan migrate
     public function up()
     {
         Schema::create('galleries', function (Blueprint $table) {

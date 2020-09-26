@@ -11,6 +11,8 @@ class CreateTravelPackagesTable extends Migration
      *
      * @return void
      */
+    //cara membuat table: php artisan make:migration create_travel_packages_table --create=travel_packages
+    //cara memindahkan ke phpmyadmin MYSQL : php artisan migrate
     public function up()
     {
         Schema::create('travel_packages', function (Blueprint $table) {
