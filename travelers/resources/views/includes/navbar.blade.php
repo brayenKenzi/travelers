@@ -1,7 +1,7 @@
 <div class="container">
     <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-      <a class="navbar-brand" href="#">
-        <img src="frontend/images/logo.png" alt="" />
+      <a class="navbar-brand" href="{{ route('home') }}">
+      <img src="{{ url('frontend/images/logo.png') }}" alt="" />
       </a>
       <button
         class="navbar-toggler navbar-toggler-right"
@@ -37,7 +37,8 @@
             </div>
           </li>
           <li class="nav-item mx-md-2">
-            <a class="nav-link" href="#">Testimonial</a>
+            <a class="nav-link" href="@stack('testimonial')">Testimonial</a>
+            
           </li>
         </ul>
 

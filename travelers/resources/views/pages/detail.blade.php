@@ -2,7 +2,7 @@
 @section('title', 'Detail Travel')
 
 @section('content')
-    <main>
+  <main>
     <section class="section-details-header"></section>
     <section class="section-details-content">
       <div class="container">
@@ -153,7 +153,7 @@
               </table>
             </div>
             <div class="join-container">
-              <a href="checkout.html" class="btn btn-block btn-join-now mt-3 py-2"
+              <a href="{{ route('checkout')}}" class="btn btn-block btn-join-now mt-3 py-2"
                 >Join Now</a
               >
             </div>
@@ -163,6 +163,10 @@
     </section>
   </main>
 @endsection
+
+@push('testimonial')
+{{ url('/#testimonialsHeading') }}
+@endpush
 
 @push('prepend-style')
     <link rel="stylesheet" href="{{ url('frontend/libraries/xzoom/dist/xzoom.css')  }}" />
@@ -181,4 +185,6 @@
     });
     </script>
 @endpush
+
+
 

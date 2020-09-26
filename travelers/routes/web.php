@@ -11,11 +11,19 @@
 |
 */
 
+
+// Route untuk memanggil controller agar bisa mereturn tampilan yang dibuat
 Route::get('/', 'HomeController@index')
 ->name('home');
 
 Route::get('/detail', 'DetailController@index')
 ->name('detail');
+
+Route::get('/checkout', 'CheckoutController@index')
+->name('checkout');
+
+Route::get('/success', 'CheckoutController@success')
+->name('success');
 
 
 Route::prefix('admin')
