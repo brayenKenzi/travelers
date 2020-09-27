@@ -28,7 +28,12 @@ Route::get('/success', 'CheckoutController@success')
 
 Route::prefix('admin')
     ->namespace('Admin')
+    ->middleware(['auth', 'admin']) //auth dan admin di ambil dari kernel.php
     ->group(function () {
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
     });
+
+Auth::routes();
+
+// HAPUS AGAR TIDAK BENTROK DENGAN DI ATAS Route::get('/home', 'HomeController@index')->name('home');

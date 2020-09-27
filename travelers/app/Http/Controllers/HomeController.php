@@ -6,10 +6,15 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+
+    //HAPUS FUNCTION CONSTRUCT YG DI TIMPA AUTH
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
-        return view('pages.home'); //contoh folder pages/home.blade.php
+        return view('pages.home'); //balikan lagi ke pages.home
     }
 }
-
-// controller untuk menampung function yang bergunan untuk mereturn tampilan 
