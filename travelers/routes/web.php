@@ -34,6 +34,6 @@ Route::prefix('admin')
             ->name('dashboard');
     });
 
-Auth::routes();
+Auth::routes(['verify' => true]); //verifikasi masuk
 
 // HAPUS AGAR TIDAK BENTROK DENGAN DI ATAS Route::get('/home', 'HomeController@index')->name('home');
