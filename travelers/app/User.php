@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail //implementasi Mus
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'email', 'password', //menambahkan username di field users  
     ];
 
     /**
