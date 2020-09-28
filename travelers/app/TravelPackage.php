@@ -15,6 +15,8 @@ class TravelPackage extends Model
         'title', 'slug', 'location', 'about', 'featured_event', 
         'language', 'foods', 'departure_date', 'duration', 'type', 'price'
         //field dari table Travel_package
+        // agar model bisa dipanggil harusa ditambahkan ke Controller
+        // Contoh : TravelPackageController
     ];
 
     protected $hidden = [
