@@ -21,7 +21,7 @@ class TravelPackageRequest extends FormRequest
      *
      * @return array
      */
-    // untuk Validasi
+    // untuk Validasi agar field tidak boleh di isi kosong
     // cara pembuatan : php artisan make:request Admin\\TravelPackageRequest
     public function rules()
     {
