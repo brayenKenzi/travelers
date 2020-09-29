@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Request\Admin\TravelPackageRequest;
 use App\TravelPackage; //tambahkan Model TravelPackage agar bisa dipanggil
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; //panggil library str agar bisa dipakai di slug
 
 class TravelPackageController extends Controller
 {
@@ -18,7 +20,7 @@ class TravelPackageController extends Controller
         $items = TravelPackage::all(); //Panggil semua yang ada di TravelPackage
 
         return view('pages.admin.travel-package.index', [ //kembalikan view indexnya
-            'items' =>$items
+            'items' => $items
         ]);
     }
 
@@ -29,7 +31,7 @@ class TravelPackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.travel-package.create'); //untuk mengembalikaan view create
     }
 
     /**
@@ -38,9 +40,13 @@ class TravelPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TravelPackageRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] =  Str::slug($request->title); //MENGKONFERSI TITLE MENJADI SLUG YANG DAPAT DIBACA OLEH ID 'BENTUKNYA NAMA.../DATA.../'
+
+        TravelPackage::create($data); //Panggil MODEL travelpackage dan panggil fungsi create lalu ambil semua data beserta slug.
+        return redirect()->route('travel-package.index'); //untuk mengembalikan index travel-package ke user
     }
 
     /**
