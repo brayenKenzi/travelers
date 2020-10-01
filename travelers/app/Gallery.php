@@ -24,7 +24,7 @@ class Gallery extends Model
     // membuat relasi antara travle_package dan gallery
     public function travel_package()
     {
-        return $this->belongsTo(TravelPackage::class, 'travle_packages_id', 'id') //belongsTo adalah "Punya nya siapa"
+        return $this->belongsTo(TravelPackage::class, 'travle_packages_id', 'id'); //belongsTo adalah "Punya nya siapa"
                                                         //Forgein key       Owner ID
     }
 }
