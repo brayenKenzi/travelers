@@ -34,7 +34,9 @@ Route::prefix('admin')
             ->name('dashboard');
 
         
-        Route::resource('travel-package', 'TravelPackageController');
+        Route::resource('travel-package', 'TravelPackageController');//agar bisa dipanggil link travle-packagenya
+
+        Route::resource('gallery', 'GalleryController'); //agar bisa dipanggil link gallery
 
     });
 

@@ -23,6 +23,7 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item ">
             <a class="nav-link" href="{{ route('travel-package.index')}}">
+              {{-- ROUTE untuk memanggil routingan yang kita buat di WEB.php | travel-package adalah nama routingan --}}
               <i class="fas fa-fw fa-hotel"></i>
               <span>Paket Travel</span></a>
           </li>
@@ -31,7 +32,8 @@
 
               <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('gallery.index')}}">
+          {{-- ROUTE untuk memanggil routingan yang kita buat di WEB.php | gallery adalah nama routingan --}}
           <i class="fas fa-fw fa-images"></i>
           <span>Galerry Travel</span></a>
       </li>
