@@ -18,7 +18,7 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('travel_packages_id');
-            $table->text('images');
+            $table->text('image'); //hanya nama gambar yg disimpan ke database
             $table->softDeletes();
             $table->timestamps();
         });

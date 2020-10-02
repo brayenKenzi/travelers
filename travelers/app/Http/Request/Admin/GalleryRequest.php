@@ -26,9 +26,10 @@ class GalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'travel_packages_id' => 'required|integer|exist:travel_package,id',
-            //membuat dari travel_packages_id memang ada di table travel_package
-            'image' => 'required|image'
+            'travel_packages_id' => 'required|integer|exists:travel_packages,id',
+            //membuat dari travel_packages_id memang ada di table travel_packages
+            'image' => 'required|image',
+            // untuk memvalidasi gambar
             // isi dari Field database untuk di validasi
         ];
     }

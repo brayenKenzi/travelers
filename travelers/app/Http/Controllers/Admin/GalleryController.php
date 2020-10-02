@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Request\Admin\GalleryRequest; //untuk validasi
 use App\Gallery; //tambahkan Model Gallery agar bisa dipanggil
+use App\TravelPackage; //harus ditambahkan agar TravelPackage:all bisa jalan
 use Illuminate\Http\Request;
 use Illuminate\Support\Str; //panggil library str agar bisa dipakai di slug
 
@@ -17,7 +18,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $items = Gallery::with(['travel_package'])->get(); //untuk mengambil relasi dari Model Gallery
+        $items = Gallery::with(['travel_package'])->get(); //untuk mengambil relasi TRAVEL_PACKAGE dari Model Gallery
 
         return view('pages.admin.gallery.index', [ //kembalikan view indexnya
             'items' => $items
@@ -31,7 +32,10 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.gallery.create'); //untuk mengembalikaan view create
+        $travel_packages = TravelPackage::all(); //untuk menambahkan ke gallery
+        return view('pages.admin.gallery.create', [
+            'travel_packages' => $travel_packages
+        ]);
     }
 
     /**
@@ -43,9 +47,13 @@ class GalleryController extends Controller
     public function store(GalleryRequest $request)
     {
         $data = $request->all();
-        $data['slug'] =  Str::slug($request->title); //MENGKONFERSI TITLE MENJADI SLUG YANG DAPAT DIBACA OLEH ID 'BENTUKNYA NAMA.../DATA.../'
-
-        Gallery::create($data); //Panggil MODEL gallery dan panggil fungsi create lalu ambil semua data beserta slug.
+        $data['image'] = $request->file('image')->store(
+            //variable data di isi dengan image | ambil image nya dengan variable $request file dengan key name nya Imaga lalu panggil fungsi STORE lalu definisikan path nya di asstets gallery lalu gambar disimpan ke public agar bisa di akses. | "secara otomatis nama filenya akan masuk ke $data['image] dan tersimpan ke Gallery $data.
+            'assets/gallery',
+            'public'
+            //path untuk akses gambar   
+        );
+        Gallery::create($data); //Panggil MODEL gallery dan panggil fungsi create lalu ambil semua data.
         return redirect()->route('gallery.index'); //untuk mengembalikan index gallery ke user
     }
 
@@ -70,7 +78,7 @@ class GalleryController extends Controller
     {
         $item = Gallery::findOrFail($id); //findOrFail adalah fungsi untuk memunculkan data bila ada & mengembalikan 404 jika tidak ketemu
 
-        return view ('pages.admin.gallery.edit', [ //untuk mengembalikan halaman edit
+        return view('pages.admin.gallery.edit', [ //untuk mengembalikan halaman edit
             'item' => $item //yang isi nya variable item
         ]);
     }
@@ -87,10 +95,10 @@ class GalleryController extends Controller
         $data = $request->all();
         $data['slug'] =  Str::slug($request->title);
 
-        $item = Gallery::findOrFail($id); 
+        $item = Gallery::findOrFail($id);
 
         $item->update($data); //Panggil variable item dan jalankan fungsi update untuk mengubah $data 
-        
+
         return redirect()->route('gallery.index'); //jika sudah selesai di update maka akan dikembalikan ke index gallery
     }
 

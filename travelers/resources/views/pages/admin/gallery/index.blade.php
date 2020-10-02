@@ -32,10 +32,10 @@
                             <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->travel_package->title }}</td>
-                            {{-- untuk memanggilan relasi travel_package yang berada di model Gallery --}}
+                            {{-- untuk memanggil relasi travel_package yang berada di model TravelPackage --}}
                             <td>
                                 <img src="{{ Storage::url($item->image) }}" alt="" style="width: 100px" class="img-thumbnail" />
-                                {{-- sebelumnya harusa jalankan : php artisan storage:link | agar folder storage bisa diakses di public & gambarnya bisa muncul--}}
+                                {{-- sebelumnya harusajalankan : php artisan storage:link | agar folder storage bisa diakses di public & gambarnya bisa muncul--}}
                             </td>
                             <td>
                                 <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
