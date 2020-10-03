@@ -77,9 +77,11 @@ class GalleryController extends Controller
     public function edit($id)
     {
         $item = Gallery::findOrFail($id); //findOrFail adalah fungsi untuk memunculkan data bila ada & mengembalikan 404 jika tidak ketemu
+        $travel_packages = TravelPackage::all(); //untuk menambahkan ke gallery
 
         return view('pages.admin.gallery.edit', [ //untuk mengembalikan halaman edit
-            'item' => $item //yang isi nya variable item
+            'item' => $item, //yang isi nya variable item
+            'travel_packages' => $travel_packages
         ]);
     }
 
@@ -93,7 +95,12 @@ class GalleryController extends Controller
     public function update(GalleryRequest $request, $id) //Panggil validasinya agar field tidak boleh kosong
     {
         $data = $request->all();
-        $data['slug'] =  Str::slug($request->title);
+        $data['image'] = $request->file('image')->store(
+            //variable data di isi dengan image | ambil image nya dengan variable $request file dengan key name nya Imaga lalu panggil fungsi STORE lalu definisikan path nya di asstets gallery lalu gambar disimpan ke public agar bisa di akses. | "secara otomatis nama filenya akan masuk ke $data['image] dan tersimpan ke Gallery $data.
+            'assets/gallery',
+            'public'
+            //path untuk akses gambar   
+        );
 
         $item = Gallery::findOrFail($id);
 
