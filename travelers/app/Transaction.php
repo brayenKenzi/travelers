@@ -30,7 +30,7 @@ class Transaction extends Model
 
     protected $hidden = [];
 
-    // membuat relasi antara travel_package dan gallery agar bisa terkoneksi 2 table
+    // membuat relasi antara 'transaction' dan 'transacitionDetail' agar bisa terkoneksi 2 table
     public function details()
     {
         return $this->hasMany(TransactionDetail::class, 'transactions_id', 'id');

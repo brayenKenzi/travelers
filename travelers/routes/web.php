@@ -38,6 +38,8 @@ Route::prefix('admin')
 
         Route::resource('gallery', 'GalleryController'); //agar bisa dipanggil link gallery
 
+        Route::resource('transaction', 'TransactionController');
+
     });
 
 Auth::routes(['verify' => true]); //verifikasi masuk
