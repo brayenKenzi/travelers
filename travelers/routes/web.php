@@ -19,7 +19,7 @@ Route::get('/', 'HomeController@index')
 Route::get('/detail/{slug}', 'DetailController@index') //slug untuk pengganti ID
 ->name('detail');
 
-Route::post('/checkout/{id}', 'CheckoutController@process') //mengunakan parameter ID dan memanggil methon process
+Route::post('/checkout/{id}', 'CheckoutController@process') //halaman checkout dengan tambahan parameter ID dan untuk menjalankan Proses data dari checkout
     ->name('checkout_process') //untuk merubah name 
     ->middleware(['auth', 'verified']); //untuk verifikasi apakah sudah login atau belum 'SATPAM'
 
@@ -27,15 +27,15 @@ Route::get('/checkout/{id}', 'CheckoutController@index')
     ->name('checkout')
     ->middleware(['auth', 'verified']);
 
-Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')
+Route::post('/checkout/create/{detail_id}', 'CheckoutController@create') //untuk menambahkan user yang ini checkout selain kita
     ->name('checkout-create')
     ->middleware(['auth', 'verified']);
 
-Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')
+Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove') //untuk menghapus user
     ->name('checkout-remove')
     ->middleware(['auth', 'verified']);
 
-Route::get('/checkout/confirm/{id}', 'CheckoutController@success')
+Route::get('/checkout/confirm/{id}', 'CheckoutController@success') //jika user sudah yakin dan sudah konfirmasi maka statusnya akan menjadi Sukses
     ->name('checkout-success')
     ->middleware(['auth', 'verified']);
 
