@@ -16,7 +16,7 @@
 Route::get('/', 'HomeController@index')
 ->name('home');
 
-Route::get('/detail', 'DetailController@index')
+Route::get('/detail/{slug}', 'DetailController@index') //skug untuk pengganti ID
 ->name('detail');
 
 Route::get('/checkout', 'CheckoutController@index')
