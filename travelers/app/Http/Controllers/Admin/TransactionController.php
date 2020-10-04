@@ -119,4 +119,6 @@ class TransactionController extends Controller
 
         return redirect()->route('transaction.index');
     }
+
+    // UNTUK DELETE TIDAK PERLU DIUBAH DARI SEBELUMNYA
 }
