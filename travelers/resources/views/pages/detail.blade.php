@@ -128,7 +128,7 @@
               </table>
             </div>
             <div class="join-container">
-              @auth
+              @auth {{--  untuk mengecek apakah sudah login, kalau sudah bisa ditekan btn join --}}              
                 <form action="post">
                   @csrf
                   <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
@@ -136,7 +136,7 @@
                   </button>
                 </form>
               @endauth
-              @guest
+              @guest {{--  untuk mengecek apakah sudah login, kalau belum bisa ditekan btn Login Or Register to Join --}}
                 <a href="{{ route('login')}}" class="btn btn-block btn-join-now mt-3 py-2"
                 >Login Or Register to Join</a>
               @endguest
