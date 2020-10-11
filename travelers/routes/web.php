@@ -52,6 +52,8 @@ Route::prefix('admin')
         
         Route::resource('travel-package', 'TravelPackageController');//agar bisa dipanggil link travle-packagenya
 
+        // Route::get('')
+
         Route::resource('gallery', 'GalleryController'); //agar bisa dipanggil link gallery
 
         Route::resource('transaction', 'TransactionController');

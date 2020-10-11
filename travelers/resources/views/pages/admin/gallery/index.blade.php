@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+@push('ong')
+    active
+@endpush
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

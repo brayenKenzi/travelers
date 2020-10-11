@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+@push('ond')
+    active
+@endpush
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -19,7 +22,7 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Paket Travel</div>
+                <a class="text-xs font-weight-bold text-primary text-uppercase mb-1" href="{{ route('travel-package.index')}}">Paket Travel</a>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $travel_package }}</div>   {{-- variable $travel_package dibuat di DashboardController --}}
               </div>
               <div class="col-auto">
@@ -36,7 +39,7 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Transaksi</div>
+                <a href="{{ route('transaction.index')}}" class="text-xs font-weight-bold text-success text-uppercase mb-1">Transaksi</a>
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaction }}</div>
               </div>
               <div class="col-auto">

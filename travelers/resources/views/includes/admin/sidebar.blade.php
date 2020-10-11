@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item @stack('ond')">
       <a class="nav-link" href="{{ route('dashboard')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
@@ -21,7 +21,7 @@
     <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item ">
+        <li class="nav-item @stack('onp')">
             <a class="nav-link" href="{{ route('travel-package.index')}}">
               {{-- ROUTE untuk memanggil routingan yang kita buat di WEB.php | travel-package adalah nama routingan --}}
               <i class="fas fa-fw fa-hotel"></i>
@@ -31,7 +31,7 @@
           <hr class="sidebar-divider my-0">
 
               <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item @stack('ong')">
         <a class="nav-link" href="{{ route('gallery.index')}}">
           {{-- ROUTE untuk memanggil routingan yang kita buat di WEB.php | gallery adalah nama routingan --}}
           <i class="fas fa-fw fa-images"></i>
@@ -41,7 +41,7 @@
       <hr class="sidebar-divider my-0">
 
           <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item @stack('ont')">
       <a class="nav-link" href="{{ route('transaction.index') }}">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>Transaksi</span></a>
