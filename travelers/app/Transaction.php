@@ -18,14 +18,14 @@ class Transaction extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'travel_package_id', 
-        'user_id',
+        'travel_package_id',
+        'users_id',
         'additional_visa',
         'transaction_total',
         'transaction_status'
-        //field dari table Galleries
+        //field dari table Transactions | 'penulisan field harus sesuai sama di DB'
         // agar model bisa dipanggil harusa ditambahkan ke Controller
-        // Contoh : Gallery 
+         
     ];
 
     protected $hidden = [];

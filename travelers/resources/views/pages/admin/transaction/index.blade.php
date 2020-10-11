@@ -16,14 +16,14 @@
             <div class="table-responsive">
                 <table class="table-bordered" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr style="background-color: rgba(92, 91, 91, 0.603); color : white;">
                             <th>ID</th>
                             <th>Travel</th>
                             <th>User</th>
                             <th>Visa</th>
                             <th>Total</th>
                             <th>Status</th>
-                            <th>Action</th>                            
+                            <th class="text-center">Action</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
                             <td>{{ $item->additional_visa }}</td>
                             <td>{{ $item->transaction_total }}</td>
                             <td>{{ $item->transaction_status }}</td>
-                            <td>
+                            <td class="text-center  d-flex justify-content-around">
                                 <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">
                                     <i class="fa fa-eye"></i>
                                 </a>

@@ -129,7 +129,7 @@
             </div>
             <div class="join-container">
               @auth {{--  untuk mengecek apakah sudah login, kalau sudah bisa ditekan btn join --}}              
-                <form action="post">
+                <form  action="{{ route('checkout_process', $item->id) }}" method="post">
                   @csrf
                   <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
                     Join Now

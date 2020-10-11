@@ -17,7 +17,7 @@ class CheckoutController extends Controller
 {
     public function index(Request $request, $id)
     {
-        $item = Transaction::with(['detail', 'travel_package', 'user'])->findOrFail($id);
+        $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($id);
         return view('pages.checkout', [
             'item' => $item
         ]);
@@ -27,25 +27,25 @@ class CheckoutController extends Controller
 
     public function process(Request $request, $id) //FUNGSINYA UNTUK MEMBUAT DATA ATAU MEMASUKAN DATA KE TABLE TRANSAKSI
     {
-       $travel_package = TravelPackage::findOrFail($id); //ambil data TravelPackage sesuai ID nya kalau tidak ada kembalikan 404
+        $travel_package = TravelPackage::findOrFail($id); //ambil data TravelPackage sesuai ID nya kalau tidak ada kembalikan 404
 
-       $transaction = Transaction::create([
-           'travel_package_id' => $id,
-           'users_id' => Auth::user()->id, //ID USER yang sedang login
-           'additional_visa' => 0,
-           'transaction_total' => $travel_package->price, //harga dari travel tersebut
-           'transaction_status' => 'IN_CART'
-       ]);
+        $transaction = Transaction::create([
+            'travel_package_id' => $id,
+            'users_id' => Auth::user()->id, //ID USER yang sedang login
+            'additional_visa' => 0,
+            'transaction_total' => $travel_package->price, //harga dari travel tersebut
+            'transaction_status' => 'IN_CART'
+        ]);
 
-       TransactionDetail::create ([ //fungsi untuk manambahkan orang dari luar agar bisa dicheckout ID tersebut
+        TransactionDetail::create([ //fungsi untuk manambahkan orang dari luar agar bisa dicheckout ID tersebut
             'transactions_id' => $transaction->id,
             'username' => Auth::user()->username,
             'nationality' => 'ID',
             'is_visa' => false,
             'doe_passport' => Carbon::now()->addYears(5) //untuk memunculkan waktu sekarang dan tambah tahun
-       ]);
+        ]);
 
-       return redirect()->route('checkout', $transaction->id);
+        return redirect()->route('checkout', $transaction->id);
     }
 
 
@@ -57,19 +57,18 @@ class CheckoutController extends Controller
         $transaction = Transaction::with(['details', 'travel_package'])
             ->findOrFail($item->transaction_id);
 
-            if ($item->is_visa) {
-                $transaction->transaction_total -= 190;
-                $transaction->additional_visa -= 190;
-            }
-    
-            $transaction->transaction_total -= 
-                $transaction->travel_package->price; //harga dari travel packagenya 
-    
-            $transaction->save(); //untuk save transaction
-            $item->delete(); //untuk menghapus item
+        if ($item->is_visa) {
+            $transaction->transaction_total -= 190;
+            $transaction->additional_visa -= 190;
+        }
 
-            return redirect()->route('checkout', $item->transaction_id); 
+        $transaction->transaction_total -=
+            $transaction->travel_package->price; //harga dari travel packagenya 
 
+        $transaction->save(); //untuk save transaction
+        $item->delete(); //untuk menghapus item
+
+        return redirect()->route('checkout', $item->transactions_id);
     }
 
 
@@ -78,14 +77,14 @@ class CheckoutController extends Controller
     {
         // untuk Validasi
         $request->validate([
-            'username' => 'required|string|exists:user,username',
+            'username' => 'required|string|exists:users,username',
             'is_visa' => 'required|boolean',
             'doe_passport' => 'required'
         ]);
-        
-        // mengatur data untuk dimasukan ke Transaction_detail
+
+        // mengatur data untuk dimasukan ke Transaction_detail -> transactions_id
         $data = $request->all();
-        $data['transaction_id'] = $id; //isi dari $data sebelumnya di tambahkan array baru berisi transaction_id
+        $data['transactions_id'] = $id; //isi dari $data sebelumnya di tambahkan array baru berisi transactions_id
 
         // untuk Insert data nya
         TransactionDetail::create($data); //yaitu isi $data diatas
@@ -99,7 +98,7 @@ class CheckoutController extends Controller
             $transaction->additional_visa += 190;
         }
 
-        $transaction->transaction_total += 
+        $transaction->transaction_total +=
             $transaction->travel_package->price; //harga dari travel packagenya 
 
         $transaction->save(); //untuk save transaction
