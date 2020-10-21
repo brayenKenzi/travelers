@@ -73,7 +73,10 @@
                           {{ \Carbon\Carbon::createFromDate ($detail->doe_passport) > \Carbon\Carbon::now() ? 'Active' : 'Inactive' }}  {{-- UNTUK MEMBUAT TANGGAL DOE_PASSPORT | UNTUK MENGECEK APAKAH TANGGAL EXPIRED NYA LEBIH DARI HARI INI ATAU TIDAK? KALAU MASIH AKTIV MUNCULKAN 'Active' KALAU TIDAK MUNCULKAN 'Inactive' --}}
                         </td>
                         <td class="align-middle">
-                          <a href="{{ route('checkout', $detail->id) }}">  {{-- UNTUK MENGHAPUS USER DIPERLUKAN MEMANGGIL ROUTE CHECKOUT DAN SPESIFIKASIKAN DENGAN '$detail->id' untuk mengembalikan--}}
+                          <a href="{{ route('checkout-remove', $detail->id) }}"> 
+                            {{-- UNTUK MENGHAPUS USER 
+                            DIPERLUKAN MEMANGGIL ROUTE CHECKOUT DAN SPESIFIKASIKAN DENGAN '$detail->id' untuk mengembalikan--}}
+                            @method('delete')
                             <img src="{{ url('frontend/images/ic_remove.png') }}" alt="" />
                           </a>
                         </td>
