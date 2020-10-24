@@ -1,5 +1,9 @@
 @extends('layouts.applogin')
 
+@section('title')
+    Login
+@endsection
+
 @section('content')
 {{-- login bawaan laravel --}}
 {{-- <div class="container">
@@ -150,4 +154,5 @@
         </div>
     </div>
 </main>
+
 @endsection

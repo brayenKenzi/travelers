@@ -493,6 +493,7 @@ header {
         color: #fff;
 
         &:hover {
+            background-color: #E07F34;
             color: #fff;
         }
     }
@@ -507,8 +508,8 @@ header {
             // line-height: 67px;
 
             @media (max-width: 600px) {
-              font-size: 10vw;
-              margin-bottom: 0;
+                font-size: 9vw;
+                margin-bottom: 15px;
             }
         }
 
@@ -529,8 +530,20 @@ header {
         }
 
         @media (max-width: 600px) {
-          height: 80vh;
+            height: 80vh;
         }
     }
 
+}
+
+.btn-register {
+    background-color: #071C4D;
+    color: #fff;
+
+
+
+    &:hover {
+        background-color: #003ECD;
+        color: #fff;
+    }
 }
