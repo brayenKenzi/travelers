@@ -503,4 +503,43 @@ header .btn-get-started:hover {
   background-color: #003ECD;
   color: #fff;
 }
+
+.logoVerify {
+  width: 170px;
+  margin-left: auto;
+}
+
+.registering {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  /* identical to box height */
+  text-align: center;
+  color: #C4C4C4;
+}
+
+.emailVerify {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.verify {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  color: #071C4D;
+  margin-bottom: 10px;
+}
+
+.backHome {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #828282;
+}
 /*# sourceMappingURL=main.css.map */

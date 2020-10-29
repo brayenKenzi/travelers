@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Verify</title>
+    <link
+      rel="stylesheet"
+      href="libraries/bootstrap/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Assistant:200,400,700&&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    
+    
+
+    <main class="verify-container">
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="col-12 text-center mt-4">
+            <img src="images/logo.png" class="logoVerify">
+            <p class="mt-4 registering">Thank you for registering!</p>
+            <img src="images/email.png" class="emailVerify">
+            <h3 class="verify">Verify your email address</h3>
+            <p class="mb-0">Please click on the link that has just been sent to your email account to verify your email and <br>
+            continue the transaction process.</p>
+            <p class="mb-5 mt-0">haven't you received the email?<a href=""> send another email</a></p>
+            <a href="#" class="backHome"><span><img src="images/back.png"></span>  Back to Homepage</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+  
+                  <div class="card-body">
+                      @if (session('resent'))
+                          <div class="alert alert-success" role="alert">
+                              {{ __('A fresh verification link has been sent to your email address.') }}
+                          </div>
+                      @endif
+  
+                      {{ __('Before proceeding, please check your email for a verification link.') }}
+                      {{ __('If you did not receive the email') }},
+                      <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                          @csrf
+                          <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+    <script src="libraries/retina/retina.js"></script>
+    <script src="libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+  </body>
+</html>
