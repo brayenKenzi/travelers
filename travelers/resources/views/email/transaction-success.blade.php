@@ -113,7 +113,7 @@
                         <tbody>
                           <tr>
                             <td style="width:180px;">
-                              <img alt="" height="auto" src="images/logo.png" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="180" />
+                              <img alt="" height="auto" src="{{ url('frontend/images/logo.png')}}" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="180" />
                             </td>
                           </tr>
                         </tbody>
@@ -213,7 +213,7 @@
                         <tbody>
                           <tr>
                             <td style="width:550px;">
-                              <img alt="" height="auto" src="images/nusaPeninda.jpg" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" />
+                              <img alt="" height="auto" src="{{ url($data->travel_package->galleries[0]->image)}}" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" />
                             </td>
                           </tr>
                         </tbody>
@@ -267,7 +267,7 @@
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                           <tr>
                             <td align="left" style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word;">
-                              <div style="font-family:Assistant, Helvetica, Arial, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#071C4D;">Hi, Brayen Paputungan <br><br> Tiket digital kamu sudah diberhasil dicetak. <br> Booking ID <strong>#25566400</strong></div>
+                              <div style="font-family:Assistant, Helvetica, Arial, sans-serif;font-size:18px;line-height:28px;text-align:left;color:#071C4D;">Hi, {{ $data->user->name }} <br><br> Tiket digital kamu sudah diberhasil dicetak. <br> Booking ID <strong>#{{ $data->id }}</strong></div>
                             </td>
                           </tr>
                           <tr>
@@ -276,14 +276,13 @@
                                 <tr>
                                   <td colspan="3">Members</td>
                                 </tr>
+
+                                @foreach ($data->details as $item)
                                 <tr>
-                                  <td><strong>Brayen Paputungan</strong></td>
-                                  <td style="text-align: right;">Indonesia, ID</td>
+                                    <td><strong>{{ $item->username }}</strong></td>
+                                    <td style="text-align: right;">{{ $item->nationality }}</td>
                                 </tr>
-                                <tr>
-                                  <td><strong>Mifta H. Limabanadi</strong></td>
-                                  <td style="text-align: right;">Singapore, SG</td>
-                                </tr>
+                                @endforeach
                               </table>
                             </td>
                           </tr>
@@ -295,11 +294,11 @@
                                 </tr>
                                 <tr>
                                   <td><strong>Departure</strong></td>
-                                  <td style="text-align: right;">Makkah</td>
+                                <td style="text-align: right;"> {{ $data->travel_package->title }}</td>
                                 </tr>
                                 <tr>
                                   <td><strong>Date and Time</strong></td>
-                                  <td style="text-align: right;">Thu, 27 Mei 2025</td>
+                                  <td style="text-align: right;">{{ $data->travel_package->departure_date}}</td>
                                 </tr>
                               </table>
                             </td>
@@ -309,7 +308,7 @@
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                                 <tr>
                                   <td align="center" bgcolor="#FF9E53" role="presentation" style="border:none;border-radius:4px;cursor:auto;mso-padding-alt:10px 25px;background:#FF9E53;" valign="middle">
-                                    <p style="display:inline-block;background:#FF9E53;color:#ffffff;font-family:Assistant, Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:4px;"> Check Detail </p>
+                                  <a href="{{ url('checkout/' . $data->id) }}" style="display:inline-block;background:#FF9E53;color:#ffffff;font-family:Assistant, Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:4px;"> Check Detail </a>
                                   </td>
                                 </tr>
                               </table>
@@ -411,7 +410,7 @@
                       <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
                         <tr>
                           <td style="width: 50px;">
-                            <img src="images/icSupport.png" width="50px">
+                            <img src="{{ url('frontend/images/icSupport.png')}}" width="50px">
                           </td>
                           <td style="font-size:18px; padding-left:10px; color: #071C4D; font-family: Assistant, Helvetica, Arial, sans-serif"> support@travelers.id <br> 0434-6651-2231 </td>
                         </tr>

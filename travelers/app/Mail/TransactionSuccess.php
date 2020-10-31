@@ -13,10 +13,6 @@ class TransactionSuccess extends Mailable
 
     public $data;
 
-
-
-
-
     /**
      * Create a new message instance.
      *
