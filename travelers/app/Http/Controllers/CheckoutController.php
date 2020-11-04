@@ -14,6 +14,10 @@ use Carbon\Carbon; //untuk memformat tanggal yang akan disimpan ke DB
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; //untuk mengecek id user
 
+use Midtrans\Config; //untuk memanggil config Midtrans
+use Midtrans\Snap; //untuk memanggil snap Midtrans
+use Exception;
+
 
 // controller untuk menampilkan page Checkout & Success
 class CheckoutController extends Controller
@@ -120,13 +124,45 @@ class CheckoutController extends Controller
 
         $transaction->save();
 
+        // Set konfigurasi Midtrans
+        Config::$serverKey = config('midtrans.serverKey');
+        Config::$isProduction = config('midtrans.isProduction');
+        Config::$isSanitized = config('midtrans.isSanitized');
+        Config::$is3ds = config('midtrans.is3ds');
+
+        // Buat array untuk dikirimkan ke midtrans
+        $midtrans_params = [
+            'transaction_details' => [
+                'order_id' => 'MIDTRANS-' . $transaction->id,
+                'gross_amount' => (int) $transaction->transaction_total,
+            ],
+            'costumer_details' => [
+                'first_name' => $transaction->user->name,
+                'email' => $transaction->user->email,
+            ],
+            'enabled_payments' => '[gopay]',
+            'vtweb' => [],
+        ];
+
+        try {
+            // Ambil halaman payment Midtrans
+            $paymentUrl = Snap::createTransaction($midtrans_params)->redirect_url;
+
+            //Redirect ke Halaman Midtrans
+            Header('Location: ' . $paymentUrl);
+        } catch (Exception $e) { //ubah ke Exception
+            echo $e->getMessage();
+        }
+
+
+        // --- FLOW UNTUK TIDAK MENGGUNAKAN MIDTRANS ---
         // return $transaction;
 
         //kirim email ke user eTicket nya 
-        Mail::to($transaction->user)->send(
-            new TransactionSuccess($transaction)
-        ); //untuk dikirimkan ke construct di TransactionSuccess
+        // Mail::to($transaction->user)->send(
+        //     new TransactionSuccess($transaction)
+        // ); //untuk dikirimkan ke construct di TransactionSuccess
 
-        return view('pages.success');
+        // return view('pages.success');
     }
 }
