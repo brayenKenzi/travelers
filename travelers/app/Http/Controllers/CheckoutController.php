@@ -124,6 +124,7 @@ class CheckoutController extends Controller
 
         $transaction->save();
 
+        
         // Set konfigurasi Midtrans
         Config::$serverKey = config('midtrans.serverKey');
         Config::$isProduction = config('midtrans.isProduction');
@@ -133,7 +134,7 @@ class CheckoutController extends Controller
         // Buat array untuk dikirimkan ke midtrans
         $midtrans_params = [
             'transaction_details' => [
-                'order_id' => 'MIDTRANS-' . $transaction->id,
+                'order_id' => 'Travelers-' . $transaction->id,
                 'gross_amount' => (int) $transaction->transaction_total,
             ],
             'costumer_details' => [

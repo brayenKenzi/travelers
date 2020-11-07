@@ -19,6 +19,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'midtrans/*' //untuk notification handler yang langsung ke Routes WeB
     ];
 }

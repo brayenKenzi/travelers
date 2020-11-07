@@ -184,11 +184,11 @@
               <a
                 href="{{ route('checkout-success', $item->id) }}"
                 class="btn btn-block btn-join-now mt-3 py-2"
-                >I Have Made Payment</a
+                >Bayar Sekarangan</a
               >
             </div>
             <div class="text-center mt-3">
-              <a href="{{ route('detail', $item->travel_package->slug) }}" class="text-muted">Cancel Booking</a>
+              <a href="{{ route('detail', $item->travel_package->slug) }}" class="text-muted">Batalkan Order</a>
             </div>
           </div>
         </div>

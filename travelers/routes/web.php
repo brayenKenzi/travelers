@@ -14,10 +14,10 @@
 
 // Route untuk memanggil controller agar bisa mereturn tampilan yang dibuat
 Route::get('/', 'HomeController@index')
-->name('home');
+    ->name('home');
 
 Route::get('/detail/{slug}', 'DetailController@index') //slug untuk pengganti ID
-->name('detail');
+    ->name('detail');
 
 Route::post('/checkout/{id}', 'CheckoutController@process') //halaman checkout dengan tambahan parameter ID dan untuk menjalankan Proses data dari checkout
     ->name('checkout_process') //untuk merubah name 
@@ -49,17 +49,21 @@ Route::prefix('admin')
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
 
-        
-        Route::resource('travel-package', 'TravelPackageController');//agar bisa dipanggil link travle-packagenya
+
+        Route::resource('travel-package', 'TravelPackageController'); //agar bisa dipanggil link travle-packagenya
 
         // Route::get('')
 
         Route::resource('gallery', 'GalleryController'); //agar bisa dipanggil link gallery
 
         Route::resource('transaction', 'TransactionController');
-
     });
 
 Auth::routes(['verify' => true]); //verifikasi masuk
-
 // HAPUS AGAR TIDAK BENTROK DENGAN DI ATAS Route::get('/home', 'HomeController@index')->name('home');
+
+// Midtrans
+Route::post('/midtrans/callback', 'MidtransController@notificationHandler');
+Route::get('/midtrans/finish', 'MidtransController@finishRedirect');
+Route::get('/midtrans/unfinish', 'MidtransController@unfinishRedirect');
+Route::get('/midtrans/error', 'MidtransController@failedRedirect');

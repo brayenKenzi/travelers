@@ -12,12 +12,12 @@
       <div class="row">
         <div class="col">
           <h3 class="mt-3">
-            Yey! Success
+            Oopss!
           </h3>
           <p class="mt-1">
-            We've sent you email for trip
+            Transaksi kamu belum selesai.
             <br>
-            instruction please read it as well
+            Hubungi Costumer Services untuk mengatasi masalah Kamu.
           </p>
           <a href="{{ url('/')}}" class="btn btn-home-page">
             Home Page
