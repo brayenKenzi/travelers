@@ -93,11 +93,12 @@
           {{-- members are going --}}
           <div class="col-lg-4">
             <div class="card card-details card-right">
-              <h2>Members are going</h2>
+              {{-- FOR ANTRIAN MEMBER KELAK KETIKA AKAN DIGUNAKAN TINGGAL HAPUS KOMEN --}}
+              {{-- <h2>Members are going</h2>
               <div class="members my-2">
-                <img src="frontend/images/members.png" alt="" class="w-75" />
+                <img src="{{ url('frontend/images/members.png') }}" alt="" class="w-75" />
               </div>
-              <hr />
+              <hr /> --}}
               <h2>Trip Informations</h2>
               <table class="trip-informations">
                 <tr>

@@ -38,6 +38,7 @@ body {
     color: #fff;
 
     &:hover {
+        background-color: #09276d;
         color: #fff;
     }
 }
@@ -68,6 +69,7 @@ header {
         color: #fff;
 
         &:hover {
+            background-color: #fda866;
             color: #fff;
         }
     }
@@ -144,6 +146,7 @@ header {
                     color: #fff;
 
                     &:hover {
+                        background-color: #fda866;
                         color: #fff;
                     }
                 }
@@ -220,6 +223,7 @@ header {
         color: #fff;
 
         &:hover {
+            background-color: #fda866;
             color: #fff;
         }
     }
@@ -375,11 +379,18 @@ header {
         background-color: #FF9E53;
         color: #fff;
         border-radius: 0;
+        font-weight: 600;
+        font-size: 18px;
 
 
         &:hover {
             color: #fff;
+            background-color: #FFAB6A;
         }
+    }
+
+    .text-muted {
+        font-weight: 100;
     }
 
     .bank {
